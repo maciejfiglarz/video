@@ -10,10 +10,12 @@ header("Acess-Control-Allow-Headers: Acess-Control-Allow-Headers,Content-Type,Ac
 $ffmpeg = FFMpeg\FFMpeg::create();
 
 
-var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name']);
 
 $uploaddir = '/uploads/';
 $uploadfile = $uploaddir . basename($_FILES['video']['name']);
+
+var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
+
 
 
 if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
