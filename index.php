@@ -12,7 +12,7 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 
 // var_dump($_POST,$_FILES);
 
-$uploaddir = 'uploads/';
+$uploaddir = '/uploads/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
 
