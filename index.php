@@ -25,9 +25,9 @@ $uploadfile = $uploaddir . basename($_FILES['video']['name']);
 //     echo "Possible file upload attack1!\n";
 // }
 
-echo __DIR__;
+// echo __DIR__;
 
-if (move_uploaded_file($_FILES["video"]["tmp_name"], __DIR__ . "/uploads/test.jpg")) {
+if (move_uploaded_file($_FILES["video"]["tmp_name"], __DIR__ . "/uploads/" . $_FILES['video']['name'])) {
 
     echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
 } else {
