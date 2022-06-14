@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require 'vendor/autoload.php';
 
 header("Content-Type: application/json");
@@ -23,14 +25,12 @@ $uploadfile = $uploaddir . basename($_FILES['video']['name']);
 //     echo "Possible file upload attack1!\n";
 // }
 
-if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
-                     
-    echo "<b>The ".  $_FILES["video"]["name"]. " has been uploaded.</b>";
-} 
-else 
-{
-    echo "<b>Error : ". $_FILES["video"]["error"] .
-    " Sorry, there was an error uploading your file.";
+if (move_uploaded_file($_FILES["video"]["tmp_name"], "")) {
+
+    echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
+} else {
+    echo "<b>Error : " . $_FILES["video"]["error"] .
+        " Sorry, there was an error uploading your file.";
 }
 
 
