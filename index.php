@@ -10,7 +10,7 @@ header("Acess-Control-Allow-Headers: Acess-Control-Allow-Headers,Content-Type,Ac
 $ffmpeg = FFMpeg\FFMpeg::create();
 
 
-// var_dump($_POST,$_FILES);
+var_dump($_FILES);
 
 $uploaddir = '/uploads/';
 $uploadfile = $uploaddir . basename($_FILES['video']['name']);
@@ -19,7 +19,7 @@ $uploadfile = $uploaddir . basename($_FILES['video']['name']);
 if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
     echo "File is valid, and was successfully uploaded.\n";
 } else {
-    echo "Possible file upload attack!\n";
+    echo "Possible file upload attack1!\n";
 }
 
 
