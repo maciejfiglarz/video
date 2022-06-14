@@ -14,8 +14,7 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 $uploaddir = '/uploads/';
 $uploadfile = $uploaddir . basename($_FILES['video']['name']);
 
-var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
-
+// var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
 
 
 // if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
