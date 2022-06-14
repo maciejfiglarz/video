@@ -13,7 +13,7 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 // var_dump($_POST,$_FILES);
 
 $uploaddir = '/uploads/';
-$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+$uploadfile = $uploaddir . basename($_FILES['video']['name']);
 
 
 if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
