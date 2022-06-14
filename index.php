@@ -18,10 +18,21 @@ var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],
 
 
 
-if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
-    echo "File is valid, and was successfully uploaded.\n";
-} else {
-    echo "Possible file upload attack1!\n";
+// if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
+//     echo "File is valid, and was successfully uploaded.\n";
+// } else {
+//     echo "Possible file upload attack1!\n";
+// }
+
+if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
+                      
+    echo "<b>The ".  $_FILES["video"]["name"]. " has been uploaded.</b>";
+
+} 
+else 
+{
+    echo "<b>Error : ". $_FILES["video"]["error"] .
+    " Sorry, there was an error uploading your file.";
 }
 
 
