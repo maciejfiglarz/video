@@ -14,7 +14,7 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 
 
 $uploaddir = '/uploads/';
-$uploadfile = $uploaddir . basename($_FILES['video']['name']);
+$uploadfile = __DIR__ . $uploaddir . basename($_FILES['video']['name']);
 
 // var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
 
@@ -27,7 +27,7 @@ $uploadfile = $uploaddir . basename($_FILES['video']['name']);
 
 // echo __DIR__;
 
-if (move_uploaded_file($_FILES["video"]["tmp_name"], __DIR__ . "/uploads/" . $_FILES['video']['name'])) {
+if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
 
     echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
 } else {
@@ -36,17 +36,17 @@ if (move_uploaded_file($_FILES["video"]["tmp_name"], __DIR__ . "/uploads/" . $_F
 }
 
 
-  $ffmpeg = FFMpeg\FFMpeg::create();
-        $video = $ffmpeg->open('upload/test.mp4');
-        $video
-            ->filters()
-            ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
-            ->synchronize();
-        $video
-            ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
-            ->save('frame.jpg');
+$ffmpeg = FFMpeg\FFMpeg::create();
+$video = $ffmpeg->open($uploadfile);
+$video
+    ->filters()
+    ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
+    ->synchronize();
+$video
+    ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
+    ->save('frame.jpg');
 
-        $video->save(new \FFMpeg\Format\Video\X264(), 'export-x264.mp4');
+$video->save(new \FFMpeg\Format\Video\X264(), 'export-x264.mp4');
 
 
 
