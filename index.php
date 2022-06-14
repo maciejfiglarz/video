@@ -25,7 +25,7 @@ $uploadfile = __DIR__ . $uploaddir . basename($_FILES['video']['name']);
 //     echo "Possible file upload attack1!\n";
 // }
 
-// echo __DIR__;
+echo $uploadfile;
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
 
