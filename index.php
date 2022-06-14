@@ -10,7 +10,7 @@ header("Acess-Control-Allow-Headers: Acess-Control-Allow-Headers,Content-Type,Ac
 $ffmpeg = FFMpeg\FFMpeg::create();
 
 
-var_dump($_POST,$_FILES);
+// var_dump($_POST,$_FILES);
 
 
 if($FILES){
