@@ -53,12 +53,12 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 
 $video = $ffmpeg->open($uploadfile);
 
-$video
-    ->filters()
-    ->resize(new FFMpeg\Coordinate\Dimension(720, 550))
-    ->synchronize();
+// $video
+//     ->filters()
+//     ->resize(new FFMpeg\Coordinate\Dimension(720, 550))
+//     ->synchronize();
 
-$video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
+// $video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
 
 
 
