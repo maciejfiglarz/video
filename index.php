@@ -38,6 +38,7 @@ if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
 
 $ffmpeg = FFMpeg\FFMpeg::create();
 $video = $ffmpeg->open($uploadfile);
+
 $video
     ->filters()
     ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
@@ -46,7 +47,17 @@ $video
     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
     ->save('frame.jpg');
 
-$video->save(new \FFMpeg\Format\Video\X264(), 'export-x264.mp4');
+$video->save(new \FFMpeg\Format\Video\X264(), 'mobile.mp4');
+
+$video = $ffmpeg->open($uploadfile);
+
+$video
+    ->filters()
+    ->resize(new FFMpeg\Coordinate\Dimension(720, 550))
+    ->synchronize();
+
+$video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
+
 
 
 
