@@ -49,6 +49,8 @@ $video
 
 $video->save(new \FFMpeg\Format\Video\X264(), 'mobile.mp4');
 
+$ffmpeg = FFMpeg\FFMpeg::create();
+
 $video = $ffmpeg->open($uploadfile);
 
 $video
