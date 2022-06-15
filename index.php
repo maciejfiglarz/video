@@ -64,3 +64,6 @@ $video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
 
 
 echo php_ini_loaded_file();
+
+
+phpinfo();
