@@ -25,7 +25,12 @@ $uploadfile = __DIR__ . $uploaddir . basename($_FILES['video']['name']);
 //     echo "Possible file upload attack1!\n";
 // }
 
-echo $uploadfile;
+// 97mb - 02:09 min 
+
+// vps-3563b155.vps.ovh.net
+
+
+// echo $uploadfile;
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
 
@@ -49,9 +54,9 @@ $video
 
 $video->save(new \FFMpeg\Format\Video\X264(), 'mobile.mp4');
 
-$ffmpeg = FFMpeg\FFMpeg::create();
+// $ffmpeg = FFMpeg\FFMpeg::create();
 
-$video = $ffmpeg->open($uploadfile);
+// $video = $ffmpeg->open($uploadfile);
 
 // $video
 //     ->filters()
@@ -60,10 +65,12 @@ $video = $ffmpeg->open($uploadfile);
 
 // $video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
 
+header('Content-type: application/json');
+echo json_encode(['status' => "ok"]);
 
 
 
-echo php_ini_loaded_file();
+// echo php_ini_loaded_file();
 
 
-phpinfo();
+// phpinfo();
