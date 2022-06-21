@@ -35,10 +35,10 @@ $id = $_POST["id"];
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
 
-    echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
+    // echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
 } else {
-    echo "<b>Error : " . $_FILES["video"]["error"] .
-        " Sorry, there was an error uploading your file.";
+    // echo "<b>Error : " . $_FILES["video"]["error"] .
+    //     " Sorry, there was an error uploading your file.";
 }
 
 
