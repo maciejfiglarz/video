@@ -15,7 +15,7 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 
 $uploaddir = '/uploads/';
 $uploadfile = __DIR__ . $uploaddir . basename($_FILES['video']['name']);
-$id = $_POST["id"];
+$fileName = $_POST["fileName"];
 
 // var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
 
@@ -32,15 +32,12 @@ $id = $_POST["id"];
 
 
 // echo $uploadfile;
+$isSuccess = false;
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
-
+    $isSuccess  = true;
     // echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
-} else {
-    // echo "<b>Error : " . $_FILES["video"]["error"] .
-    //     " Sorry, there was an error uploading your file.";
 }
-
 
 $ffmpeg = FFMpeg\FFMpeg::create();
 $video = $ffmpeg->open($uploadfile);
@@ -51,9 +48,9 @@ $video
     ->synchronize();
 $video
     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
-    ->save('frame.jpg');
+    ->save($fileName . '_cover.jpg');
 
-$video->save(new \FFMpeg\Format\Video\X264(), 'mobile.mp4');
+$video->save(new \FFMpeg\Format\Video\X264(), $fileName . '_mobile.mp4');
 
 // $ffmpeg = FFMpeg\FFMpeg::create();
 
@@ -67,7 +64,7 @@ $video->save(new \FFMpeg\Format\Video\X264(), 'mobile.mp4');
 // $video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
 
 header('Content-type: application/json');
-echo json_encode(['imageKEY' => "ok", "videoMOBILE" == ""]);
+echo json_encode(['isSuccess' => $isSuccess, "videoMobile" => "mobile.mp4", "cover" => $fileName]);
 
 
 
