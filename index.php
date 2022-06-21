@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 require 'vendor/autoload.php';
 
 header("Content-Type: application/json");
@@ -15,6 +15,7 @@ $ffmpeg = FFMpeg\FFMpeg::create();
 
 $uploaddir = '/uploads/';
 $uploadfile = __DIR__ . $uploaddir . basename($_FILES['video']['name']);
+$id = $_POST["id"];
 
 // var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
 
@@ -66,7 +67,7 @@ $video->save(new \FFMpeg\Format\Video\X264(), 'mobile.mp4');
 // $video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
 
 header('Content-type: application/json');
-echo json_encode(['status' => "ok"]);
+echo json_encode(['imageKEY' => "ok", "videoMOBILE" == ""]);
 
 
 
