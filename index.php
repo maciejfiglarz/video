@@ -64,7 +64,7 @@ $video->save(new \FFMpeg\Format\Video\X264(), "/files/" . $fileName . '_mobile.m
 // $video->save(new \FFMpeg\Format\Video\X264(), 'desktop.mp4');
 
 header('Content-type: application/json');
-echo json_encode(['isSuccess' => $isSuccess, "videoMobile" => "mobile.mp4", "cover" => $fileName]);
+echo json_encode(['isSuccess' => $isSuccess]);
 
 
 
