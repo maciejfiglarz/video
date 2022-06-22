@@ -48,9 +48,9 @@ $video
     ->synchronize();
 $video
     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
-    ->save($fileName . '_cover.jpg');
+    ->save("/files/" . $fileName . '_cover.jpg');
 
-$video->save(new \FFMpeg\Format\Video\X264(), $fileName . '_mobile.mp4');
+$video->save(new \FFMpeg\Format\Video\X264(), "/files/" . $fileName . '_mobile.mp4');
 
 // $ffmpeg = FFMpeg\FFMpeg::create();
 
