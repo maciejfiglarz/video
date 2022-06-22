@@ -36,10 +36,11 @@ $isSuccess = false;
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
     $isSuccess  = true;
-    echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
-} else {
-    echo "<b>" .  $_FILES["video"]["name"] . " fail</b>";
-}
+    // echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
+} 
+// else {
+//     echo "<b>" .  $_FILES["video"]["name"] . " fail</b>";
+// }
 
 $ffmpeg = FFMpeg\FFMpeg::create();
 $video = $ffmpeg->open($uploadfile);
@@ -50,9 +51,9 @@ $video
     ->synchronize();
 $video
     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
-    ->save("files/" . $fileName . '_cover.jpg');
+    ->save(__DIR__."/files/" . $fileName . '_cover.jpg');
 
-$video->save(new \FFMpeg\Format\Video\X264(), "files/" . $fileName . '_mobile.mp4');
+$video->save(new \FFMpeg\Format\Video\X264(), __DIR__."/files/" . $fileName . '_mobile.mp4');
 
 // $ffmpeg = FFMpeg\FFMpeg::create();
 
