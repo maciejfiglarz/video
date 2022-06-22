@@ -36,7 +36,9 @@ $isSuccess = false;
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
     $isSuccess  = true;
-    // echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
+    echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
+} else {
+    echo "<b>" .  $_FILES["video"]["name"] . " fail</b>";
 }
 
 $ffmpeg = FFMpeg\FFMpeg::create();
