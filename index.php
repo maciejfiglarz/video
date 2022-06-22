@@ -9,7 +9,6 @@ header("Acess-Control-Allow-Origin: *");
 header("Acess-Control-Allow-Methods: POST");
 header("Acess-Control-Allow-Headers: Acess-Control-Allow-Headers,Content-Type,Acess-Control-Allow-Methods, Authorization");
 
-$ffmpeg = FFMpeg\FFMpeg::create();
 
 
 
@@ -44,16 +43,18 @@ if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
 
 $ffmpeg = FFMpeg\FFMpeg::create();
 $video = $ffmpeg->open($uploadfile);
-
+$mode = FFMpeg\Filters\Video\ResizeFilter::RESIZEMODE_SCALE_WIDTH;
 $video
     ->filters()
-    ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
+    ->resize(new FFMpeg\Coordinate\Dimension(320, 240), $mode)
     ->synchronize();
+$video->save(new \FFMpeg\Format\Video\X264(), __DIR__ . "/files/" . $fileName . '_mobile.mp4');
+
+$ffmpeg = FFMpeg\FFMpeg::create();
+$video = $ffmpeg->open($uploadfile);
 $video
     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
     ->save(__DIR__ . "/files/" . $fileName . '_cover.jpg');
-
-$video->save(new \FFMpeg\Format\Video\X264(), __DIR__ . "/files/" . $fileName . '_mobile.mp4');
 
 // $ffmpeg = FFMpeg\FFMpeg::create();
 
