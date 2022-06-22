@@ -41,18 +41,18 @@ if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
     echo "<b>" .  $_FILES["video"]["name"] . " fail</b>";
 }
 
-// $ffmpeg = FFMpeg\FFMpeg::create();
-// $video = $ffmpeg->open($uploadfile);
+$ffmpeg = FFMpeg\FFMpeg::create();
+$video = $ffmpeg->open($uploadfile);
 
-// $video
-//     ->filters()
-//     ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
-//     ->synchronize();
-// $video
-//     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
-//     ->save("/files/" . $fileName . '_cover.jpg');
+$video
+    ->filters()
+    ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
+    ->synchronize();
+$video
+    ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
+    ->save("files/" . $fileName . '_cover.jpg');
 
-// $video->save(new \FFMpeg\Format\Video\X264(), "/files/" . $fileName . '_mobile.mp4');
+$video->save(new \FFMpeg\Format\Video\X264(), "files/" . $fileName . '_mobile.mp4');
 
 // $ffmpeg = FFMpeg\FFMpeg::create();
 
