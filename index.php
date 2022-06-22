@@ -32,10 +32,10 @@ $fileName = $_POST["fileName"];
 
 
 // echo $uploadfile;
-$isSuccess = false;
+$isSuccess = "0";
 
 if (move_uploaded_file($_FILES["video"]["tmp_name"], $uploadfile)) {
-    $isSuccess  = true;
+    $isSuccess  = "1";
     // echo "<b>The " .  $_FILES["video"]["name"] . " has been uploaded.</b>";
 }
 // else {
