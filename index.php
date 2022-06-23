@@ -55,9 +55,9 @@ $format->on('progress', function ($video, $format, $percentage) {
 });
 
 $format
-    ->setKiloBitrate(160)
-    ->setAudioChannels(1)
-    ->setAudioKiloBitrate(170);
+    ->setKiloBitrate(60);
+    // ->setAudioChannels(1)
+    // ->setAudioKiloBitrate(170);
 
 $video->save($format, __DIR__ . "/files/" . $fileName . '_mobile.mp4');
 
