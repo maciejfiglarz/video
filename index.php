@@ -55,9 +55,9 @@ $format->on('progress', function ($video, $format, $percentage) {
 });
 
 $format
-    ->setKiloBitrate(1000)
-    ->setAudioChannels(2)
-    ->setAudioKiloBitrate(256);
+    ->setKiloBitrate(300)
+    ->setAudioChannels(1)
+    ->setAudioKiloBitrate(170);
 
 $video->save(new \FFMpeg\Format\Video\X264(), __DIR__ . "/files/" . $fileName . '_mobile.mp4');
 
