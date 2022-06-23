@@ -59,7 +59,7 @@ $format
     ->setAudioChannels(1)
     ->setAudioKiloBitrate(170);
 
-$video->save(new \FFMpeg\Format\Video\X264(), __DIR__ . "/files/" . $fileName . '_mobile.mp4');
+$video->save($format, __DIR__ . "/files/" . $fileName . '_mobile.mp4');
 
 
 $ffmpeg = FFMpeg\FFMpeg::create();
