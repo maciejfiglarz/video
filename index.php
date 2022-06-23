@@ -55,7 +55,7 @@ $format->on('progress', function ($video, $format, $percentage) {
 });
 
 $format
-    ->setKiloBitrate(300)
+    ->setKiloBitrate(160)
     ->setAudioChannels(1)
     ->setAudioKiloBitrate(170);
 
