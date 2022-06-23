@@ -10,7 +10,7 @@ header("Acess-Control-Allow-Methods: POST");
 header("Acess-Control-Allow-Headers: Acess-Control-Allow-Headers,Content-Type,Acess-Control-Allow-Methods, Authorization");
 
 $video = $_FILES["video"]["tmp_name"];
-$bitrate = $_POST["bitrate"];
+$bitrate = "350k";
  
 $command = "/usr/local/bin/ffmpeg -i $video -b:v $bitrate -bufsize $bitrate output.mp4";
 system($command);
