@@ -48,7 +48,19 @@ $video
     ->filters()
     ->resize(new FFMpeg\Coordinate\Dimension(320, 240), $mode)
     ->synchronize();
+
+$format = new FFMpeg\Format\Video\X264();
+$format->on('progress', function ($video, $format, $percentage) {
+    echo "$percentage % transcoded";
+});
+
+$format
+    ->setKiloBitrate(1000)
+    ->setAudioChannels(2)
+    ->setAudioKiloBitrate(256);
+
 $video->save(new \FFMpeg\Format\Video\X264(), __DIR__ . "/files/" . $fileName . '_mobile.mp4');
+
 
 $ffmpeg = FFMpeg\FFMpeg::create();
 $video = $ffmpeg->open($uploadfile);
