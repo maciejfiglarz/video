@@ -12,9 +12,51 @@ header("Acess-Control-Allow-Headers: Acess-Control-Allow-Headers,Content-Type,Ac
 
 
 
+
 $uploaddir = '/uploads/';
 $uploadfile = __DIR__ . $uploaddir . basename($_FILES['video']['name']);
 $fileName = $_POST["fileName"];
+
+
+$expire = strtotime('-1 DAYS');
+
+$files = glob("/uploads" . '/*');
+
+foreach ($files as $file) {
+
+    // Skip anything that is not a file
+    if (!is_file($file)) {
+        continue;
+    }
+
+    // Skip any files that have not expired
+    if (filemtime($file) > $expire) {
+        continue;
+    }
+
+    unlink($file);
+}
+
+
+$expire = strtotime('-1 DAYS');
+
+$files = glob("/files" . '/*');
+
+foreach ($files as $file) {
+
+    // Skip anything that is not a file
+    if (!is_file($file)) {
+        continue;
+    }
+
+    // Skip any files that have not expired
+    if (filemtime($file) > $expire) {
+        continue;
+    }
+
+    unlink($file);
+}
+
 
 // var_dump($_FILES['video'],$_FILES['video']['name'],$_FILES['video']['tmp_name'],move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile));
 
@@ -56,8 +98,8 @@ $format->on('progress', function ($video, $format, $percentage) {
 
 $format
     ->setKiloBitrate(60);
-    // ->setAudioChannels(1)
-    // ->setAudioKiloBitrate(170);
+// ->setAudioChannels(1)
+// ->setAudioKiloBitrate(170);
 
 $video->save($format, __DIR__ . "/files/" . $fileName . '_mobile.mp4');
 
