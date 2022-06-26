@@ -61,9 +61,6 @@ $format
 
 $video->save($format, __DIR__ . "/files/" . $fileName . '_mobile.mp4');
 
-
-$ffmpeg = FFMpeg\FFMpeg::create();
-$video = $ffmpeg->open($uploadfile);
 $video
     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2))
     ->save(__DIR__ . "/files/" . $fileName . '_cover.jpg');
