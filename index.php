@@ -20,7 +20,7 @@ $fileName = $_POST["fileName"];
 
 $expire = strtotime('-1 DAYS');
 
-$files = glob("/uploads" . '/*');
+$files = glob(__DIR__ ."/uploads" . '/*');
 
 foreach ($files as $file) {
 
@@ -40,7 +40,7 @@ foreach ($files as $file) {
 
 $expire = strtotime('-1 DAYS');
 
-$files = glob("/files" . '/*');
+$files = glob(__DIR__ ."/files" . '/*');
 
 foreach ($files as $file) {
 
